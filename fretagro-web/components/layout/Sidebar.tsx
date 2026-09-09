@@ -57,7 +57,7 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
       >
         {/* Logo */}
         <div className="flex h-16 items-center justify-between px-6 border-b border-grey-800">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/dashboard" className="flex items-center gap-2">
             <Truck className="h-6 w-6 text-primary-400" aria-hidden="true" />
             <span className="text-p-md font-semibold text-grey-50">FreteAgro</span>
           </Link>

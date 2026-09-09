@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-08T00:00:00Z",
+  "title": "Design System: FreteAgro — Marketing Surface (\"Estrada à Noite\")",
+  "scope": {
+    "appliesTo": ["app/(marketing)/**", "components/marketing/**", "elements carrying the .mkt class"],
+    "doesNotApplyTo": ["app/(dashboard)/**", "app/(auth)/**", "components/ui/** outside a .mkt scope"],
+    "incumbentSystem": {
+      "name": "Rayna UI v1.0",
+      "doc": "../design-system/DESIGN_SYSTEM.md",
+      "tokens": ["../design-system/tokens.css", "../design-system/tokens.ts"],
+      "note": "The authenticated product keeps ground #0D0D0D, surfaces #161616/#1E1E1E, primary #16b84f and Inter throughout. This sidecar documents a scoped layer only; the two systems share exactly one value, the brand green."
+    }
+  },
+  "extensions": {
+    "colorMeta": {
+      "mkt-ground": {
+        "role": "neutral",
+        "displayName": "Asphalt Ground",
+        "canonical": "rgb(7 7 7)",
+        "cssVar": "--mkt-ground",
+        "purpose": "Page ground, mark negative space, and the recreated panel's own background. Deliberately below the app's #0D0D0D so the marketing surface reads as outside the product.",
+        "tonalRamp": ["#070707", "#101010", "#1c1c1c", "#2e2e2e", "#4d4d4d", "#7a7a7a", "#b0b0b0", "#e6e6e6"]
+      },
+      "mkt-raise": {
+        "role": "neutral",
+        "displayName": "Raised Body",
+        "canonical": "rgb(16 16 16)",
+        "cssVar": "--mkt-raise",
+        "purpose": "The only lifted surface: the settlement document card and the phone chassis.",
+        "tonalRamp": ["#0a0a0a", "#101010", "#1d1d1d", "#303030", "#505050", "#7c7c7c", "#b2b2b2", "#e7e7e7"]
+      },
+      "mkt-ink": {
+        "role": "neutral",
+        "displayName": "Headlight Ink",
+        "canonical": "rgb(244 244 242)",
+        "cssVar": "--mkt-ink",
+        "purpose": "The single ink. Full strength for headings and settled values; /85-/70 secondary; /60-/55 body; /50 floor. Low alphas supply all structure: /20-/15 control borders, /12 unlit rail, /10 section rules, /07-/02 tinted fills.",
+        "opacityScale": {
+          "text": ["100", "90", "85", "80", "75", "70", "60", "55", "50"],
+          "structure": ["25", "20", "15", "12", "10", "8", "7", "6", "4", "3", "2"],
+          "textFloor": "50"
+        },
+        "tonalRamp": ["#1f1f1e", "#3b3b3a", "#575756", "#747472", "#90908e", "#adadaa", "#c9c9c6", "#f4f4f2"]
+      },
+      "mkt-signal": {
+        "role": "primary",
+        "displayName": "Signal Green",
+        "canonical": "rgb(22 184 79)",
+        "cssVar": "--mkt-signal",
+        "purpose": "Brand green, shared with the app. Used only where the product acts: the lineage rail, the ledger's bullet, the driver's confirm action, the revenue series, the mark's field, and the two horizon washes (7% and 16% alpha). Never a text background, never a heading colour.",
+        "tonalRamp": ["#052f14", "#075523", "#0a7b33", "#0f9c42", "#16b84f", "#2fd167", "#6ce297", "#b6f2cc"]
+      },
+      "mkt-glow": {
+        "role": "primary",
+        "displayName": "Glow Green",
+        "canonical": "rgb(27 222 95)",
+        "cssVar": "--mkt-glow",
+        "purpose": "The brighter sibling, for green that must hold on black: the settled balance, the final lineage node, the highlighted KPI, the live chip, and the focus outline.",
+        "tonalRamp": ["#06381a", "#0a6029", "#0e8839", "#14b04a", "#1bde5f", "#48e880", "#84f0a8", "#c2f8d3"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only — two lines, left-aligned, capped at 17ch below lg." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings; the closing CTA runs one step larger and centred." },
+      "figure": { "displayName": "Settled Figure", "purpose": "The settled balance and the four lineage figures. The only numbers allowed the display face." },
+      "title": { "displayName": "Title", "purpose": "Row titles, list-step titles, panel headings — Inter." },
+      "body": { "displayName": "Body", "purpose": "Section leads at ink /55-/60, capped 52-56ch." },
+      "body-small": { "displayName": "Body Small", "purpose": "Supporting paragraphs inside lists and cards." },
+      "label": { "displayName": "Label", "purpose": "Captions, illustrative-value disclaimers, meta at ink /50-/55." },
+      "label-caps": { "displayName": "Label (caps)", "purpose": "Ledger column headers and footer column titles. A table header, never a kicker above a heading." }
+    },
+    "shadows": [
+      {
+        "name": "device-drop",
+        "value": "0 28px 60px -24px rgba(0,0,0,0.9)",
+        "purpose": "The only shadow on the surface. Phone chassis in the driver section, where a physical object sits above the page."
+      }
+    ],
+    "glows": [
+      { "name": "horizon-hero", "value": "radial-gradient(circle, rgb(var(--mkt-signal) / 0.07) 0%, rgb(var(--mkt-signal) / 0) 70%)", "purpose": "The one warm bloom in the first viewport." },
+      { "name": "horizon-close", "value": "radial-gradient(circle, rgb(var(--mkt-signal) / 0.16) 0%, rgb(var(--mkt-signal) / 0) 66%)", "purpose": "The horizon returning to close the page." },
+      { "name": "hero-panel-veil", "value": "filter: saturate(0.3) blur(2.5px); mask-image: radial-gradient(105% 85% at 72% 20%, #000 0%, rgba(0,0,0,0.62) 26%, transparent 64%)", "purpose": "The product panel behind the headline: present as light, unreadable as data." }
+    ],
+    "motion": [
+      { "name": "rail-draw", "value": "transform 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.35s", "purpose": "The page's one authored moment: the lineage rail drawing itself once from its origin. Skipped under useReducedMotion." },
+      { "name": "node-pop", "value": "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), staggered 0.32s per stop from 0.45s", "purpose": "Lineage nodes appearing along the drawn rail. The figures themselves never animate in." },
+      { "name": "accordion-down", "value": "accordion-down 0.28s cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "FAQ open." },
+      { "name": "accordion-up", "value": "accordion-up 0.22s cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "FAQ close." },
+      { "name": "state-colour", "value": "color/background-color 200ms", "purpose": "Every hover and link state on the surface." },
+      { "name": "header-settle", "value": "background-color/border-color 300ms", "purpose": "The fixed header acquiring its hairline and blur past 8px of scroll." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px", "purpose": "Gutter 20px → 32px; the CTA field and button go side by side." },
+      { "name": "md", "value": "768px", "purpose": "Nav bar restored; comparison ledger becomes two ruled columns." },
+      { "name": "lg", "value": "1024px", "purpose": "Lineage rail rotates to horizontal; panel sidebar appears; larger type steps." },
+      { "name": "container", "value": "1280px", "purpose": "The single measure, shared by header, sections and footer." }
+    ],
+    "browserSurface": {
+      "selection": "background-color: rgb(var(--mkt-signal) / 0.28); color: rgb(var(--mkt-ink));",
+      "caret": "caret-color: rgb(var(--mkt-signal));",
+      "focusVisible": "outline: 2px solid rgb(var(--mkt-glow)); outline-offset: 3px; border-radius: 2px;",
+      "figures": "[data-figure] { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1; }"
+    },
+    "contrastFloor": {
+      "rule": "Marketing text never goes below /50 of the ink.",
+      "evidence": "ink #f4f4f2 at 50% over #070707 composites to ~#7d7d7c → 4.89:1 (AA pass). At /45 it composites to ~#717170 → 4.16:1 (AA fail). Verified against the shipped opacity census: the lowest text opacity in components/marketing is /50."
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The page's one action, in the hero and at the close. Ink fill, ground text, fully round.",
+      "html": "<button class=\"ds-btn-primary\">Criar conta</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 52px; padding: 0 28px; border: none; border-radius: 9999px; background: #f4f4f2; color: #070707; font-family: Inter, system-ui, sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; transition: background-color 200ms; } .ds-btn-primary:hover { background: #ffffff; } .ds-btn-primary:focus-visible { outline: 2px solid #1bde5f; outline-offset: 3px; } .ds-btn-primary:disabled { opacity: 0.7; cursor: not-allowed; }"
+    },
+    {
+      "name": "Ghost Link Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "The quiet account action beside the primary pill in the header.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Entrar</a>",
+      "css": ".ds-btn-ghost { display: inline-block; padding: 8px 16px; border-radius: 9999px; background: transparent; color: rgb(244 244 242 / 0.7); font-family: Inter, system-ui, sans-serif; font-size: 14px; text-decoration: none; transition: color 200ms; } .ds-btn-ghost:hover { color: #f4f4f2; } .ds-btn-ghost:focus-visible { outline: 2px solid #1bde5f; outline-offset: 3px; border-radius: 9999px; }"
+    },
+    {
+      "name": "Email Capture Field",
+      "kind": "input",
+      "refersTo": "input-email",
+      "description": "The surface's only input: a 52px pill that carries the address straight into signup.",
+      "html": "<div class=\"ds-field-row\"><input class=\"ds-input-email\" type=\"email\" placeholder=\"Seu e-mail de trabalho\" /><button class=\"ds-input-email-go\">Criar conta</button></div>",
+      "css": ".ds-field-row { display: flex; gap: 10px; max-width: 520px; } .ds-input-email { flex: 1; min-width: 0; height: 52px; padding: 0 20px; border: 1px solid rgb(244 244 242 / 0.15); border-radius: 9999px; background: rgb(244 244 242 / 0.04); color: #f4f4f2; font-family: Inter, system-ui, sans-serif; font-size: 15px; caret-color: #16b84f; transition: border-color 200ms; } .ds-input-email::placeholder { color: rgb(244 244 242 / 0.55); } .ds-input-email:hover { border-color: rgb(244 244 242 / 0.25); } .ds-input-email:focus-visible { outline: 2px solid #1bde5f; outline-offset: 3px; } .ds-input-email[aria-invalid=\"true\"] { border-color: rgb(244 244 242 / 0.4); } .ds-input-email-go { flex-shrink: 0; height: 52px; padding: 0 28px; border: none; border-radius: 9999px; background: #f4f4f2; color: #070707; font-family: Inter, system-ui, sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; transition: background-color 200ms; } .ds-input-email-go:hover { background: #ffffff; }"
+    },
+    {
+      "name": "Status Chip",
+      "kind": "chip",
+      "refersTo": "chip-status",
+      "description": "Freight state inside the panel recreation. The live variant is the only coloured chip on the surface.",
+      "html": "<span class=\"ds-chip\">Acerto pendente</span> <span class=\"ds-chip ds-chip--live\">Em andamento</span> <span class=\"ds-chip ds-chip--quiet\">Acerto realizado</span>",
+      "css": ".ds-chip { display: inline-block; padding: 4px 10px; border-radius: 9999px; background: rgb(244 244 242 / 0.1); color: rgb(244 244 242 / 0.75); font-family: Inter, system-ui, sans-serif; font-size: 10.5px; } .ds-chip--live { background: rgb(22 184 79 / 0.15); color: #1bde5f; } .ds-chip--quiet { background: rgb(244 244 242 / 0.06); color: rgb(244 244 242 / 0.5); }"
+    },
+    {
+      "name": "Marketing Nav",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Fixed 72px bar: transparent over the hero, hairline plus blurred ground past 8px of scroll.",
+      "html": "<header class=\"ds-nav ds-nav--scrolled\"><a class=\"ds-nav-brand\" href=\"#\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 28 28\" fill=\"none\" aria-hidden=\"true\"><rect width=\"28\" height=\"28\" rx=\"8\" fill=\"#16b84f\"/><path d=\"M7.5 21.5 12.2 7.5M20.5 21.5 15.8 7.5\" stroke=\"#070707\" stroke-width=\"1.75\" stroke-linecap=\"round\"/><path d=\"M14 19.5v-2.4M14 14.6v-2.1M14 10v-1.6\" stroke=\"#070707\" stroke-width=\"1.75\" stroke-linecap=\"round\" opacity=\"0.55\"/></svg><span>FreteAgro</span></a><nav class=\"ds-nav-links\"><a href=\"#\">Como funciona</a><a href=\"#\">O acerto</a><a href=\"#\">O painel</a><a href=\"#\">Perguntas</a></nav></header>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 40px; height: 72px; padding: 0 32px; border-bottom: 1px solid transparent; font-family: Inter, system-ui, sans-serif; transition: background-color 300ms, border-color 300ms; } .ds-nav--scrolled { background: rgb(7 7 7 / 0.8); border-bottom-color: rgb(244 244 242 / 0.1); backdrop-filter: blur(24px); } .ds-nav-brand { display: flex; align-items: center; gap: 10px; color: #f4f4f2; font-size: 15px; font-weight: 500; letter-spacing: -0.01em; text-decoration: none; } .ds-nav-brand svg { width: 28px; height: 28px; } .ds-nav-links { display: flex; align-items: center; gap: 32px; } .ds-nav-links a { color: rgb(244 244 242 / 0.55); font-size: 14px; text-decoration: none; transition: color 200ms; } .ds-nav-links a:hover { color: #f4f4f2; } .ds-nav-links a:focus-visible { outline: 2px solid #1bde5f; outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Acerto Lineage",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Signature: four stops on one continuous hairline, the money's path from freight to balance. Green rail draws once; the figures never animate in.",
+      "html": "<div class=\"ds-lineage\"><span class=\"ds-lineage-rail\"></span><span class=\"ds-lineage-rail ds-lineage-rail--lit\"></span><ol class=\"ds-lineage-stops\"><li><span class=\"ds-lineage-node\"></span><p class=\"ds-lineage-label\">Valor do frete</p><p class=\"ds-lineage-figure\">R$ 12.400,00</p></li><li><span class=\"ds-lineage-node\"></span><p class=\"ds-lineage-label\">Comissão do motorista · 12%</p><p class=\"ds-lineage-figure\">R$ 1.488,00</p></li><li><span class=\"ds-lineage-node\"></span><p class=\"ds-lineage-label\">Deduções (vale, oficina)</p><p class=\"ds-lineage-figure\"><span class=\"ds-lineage-op\">−</span>R$ 340,00</p></li><li><span class=\"ds-lineage-node ds-lineage-node--final\"></span><p class=\"ds-lineage-label\">Saldo a pagar</p><p class=\"ds-lineage-figure ds-lineage-figure--final\"><span class=\"ds-lineage-op\">=</span>R$ 1.148,00</p></li></ol></div>",
+      "css": ".ds-lineage { position: relative; font-family: Inter, system-ui, sans-serif; } .ds-lineage-rail { position: absolute; left: 0; right: 0; top: 3.5px; height: 1px; background: rgb(244 244 242 / 0.12); } .ds-lineage-rail--lit { background: #16b84f; transform-origin: left; animation: ds-lineage-draw 1.5s cubic-bezier(0.16,1,0.3,1) 0.35s both; } @keyframes ds-lineage-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } } .ds-lineage-stops { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: 0; padding: 0; list-style: none; } .ds-lineage-stops li { position: relative; padding-top: 24px; } .ds-lineage-node { position: absolute; left: 0; top: 0; width: 8px; height: 8px; border-radius: 9999px; background: #16b84f; transform: translateX(-2.5px); } .ds-lineage-node--final { background: #1bde5f; } .ds-lineage-label { margin: 0; color: rgb(244 244 242 / 0.55); font-size: 13px; line-height: 1.35; } .ds-lineage-figure { margin: 6px 0 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: 31px; line-height: 1; letter-spacing: -0.01em; color: #f4f4f2; white-space: nowrap; font-variant-numeric: tabular-nums; } .ds-lineage-figure--final { color: #1bde5f; } .ds-lineage-op { margin-right: 6px; color: rgb(244 244 242 / 0.5); } @media (prefers-reduced-motion: reduce) { .ds-lineage-rail--lit { animation: none; } }"
+    },
+    {
+      "name": "Settlement Document",
+      "kind": "card",
+      "refersTo": "card-document",
+      "description": "Signature: the acerto rendered as a document — ruled header, itemised rows, then the settled total on a green wash.",
+      "html": "<div class=\"ds-doc\"><div class=\"ds-doc-head\"><p>Acerto · Motorista 1</p><p class=\"ds-doc-meta\">Setembro / 2026</p></div><div class=\"ds-doc-body\"><dl class=\"ds-doc-rows\"><div><dt>Valor bruto do frete</dt><dd>R$ 12.400,00</dd></div><div><dt>Comissão do motorista <span class=\"ds-doc-badge\">12%</span></dt><dd>R$ 1.488,00</dd></div><div><dt>Total de deduções</dt><dd>− R$ 340,00</dd></div></dl></div><div class=\"ds-doc-total\"><p>Saldo a pagar ao motorista</p><p class=\"ds-doc-figure\">R$ 1.148,00</p></div></div>",
+      "css": ".ds-doc { overflow: hidden; border: 1px solid rgb(244 244 242 / 0.12); border-radius: 16px; background: #101010; font-family: Inter, system-ui, sans-serif; color: #f4f4f2; } .ds-doc-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 24px; padding: 20px 32px; border-bottom: 1px solid rgb(244 244 242 / 0.1); font-size: 15px; } .ds-doc-meta { color: rgb(244 244 242 / 0.55); font-size: 13px; font-variant-numeric: tabular-nums; } .ds-doc-head p, .ds-doc-total p { margin: 0; } .ds-doc-body { padding: 24px 32px; } .ds-doc-rows { display: flex; flex-direction: column; gap: 14px; margin: 0; } .ds-doc-rows > div { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; } .ds-doc-rows dt { color: rgb(244 244 242 / 0.6); font-size: 14.5px; } .ds-doc-rows dd { margin: 0; color: #f4f4f2; font-size: 15.5px; white-space: nowrap; font-variant-numeric: tabular-nums; } .ds-doc-badge { margin-left: 8px; padding: 2px 8px; border-radius: 9999px; background: rgb(244 244 242 / 0.07); color: rgb(244 244 242 / 0.7); font-size: 12px; font-variant-numeric: tabular-nums; } .ds-doc-total { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 32px; padding: 28px 32px; border-top: 1px solid rgb(244 244 242 / 0.1); background: rgb(22 184 79 / 0.05); } .ds-doc-total p:first-child { color: rgb(244 244 242 / 0.7); font-size: 14.5px; } .ds-doc-figure { font-family: 'Bodoni Moda', Georgia, serif; font-size: 52px; line-height: 1; letter-spacing: -0.02em; color: #1bde5f; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Comparison Ledger Row",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Signature: the two-column ruled ledger read across line by line, with a signal dot marking the product column.",
+      "html": "<div class=\"ds-ledger\"><div class=\"ds-ledger-head\"><p class=\"ds-ledger-caps ds-ledger-caps--quiet\">Hoje</p><p class=\"ds-ledger-caps\">Com o FreteAgro</p></div><div class=\"ds-ledger-row\"><p class=\"ds-ledger-then\">A comissão sai de cabeça e os vales são descontados de memória, num papel que some.</p><div class=\"ds-ledger-now\"><span class=\"ds-ledger-dot\"></span><p>A comissão é calculada sobre o valor do frete e cada dedução fica itemizada, com data e motivo.</p></div></div></div>",
+      "css": ".ds-ledger { font-family: Inter, system-ui, sans-serif; } .ds-ledger-head { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding-bottom: 16px; border-bottom: 1px solid rgb(244 244 242 / 0.1); } .ds-ledger-caps { margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(244 244 242 / 0.75); } .ds-ledger-caps--quiet { color: rgb(244 244 242 / 0.5); } .ds-ledger-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding: 36px 0; border-bottom: 1px solid rgb(244 244 242 / 0.1); } .ds-ledger-then { margin: 0; max-width: 46ch; font-size: 15.5px; line-height: 1.625; color: rgb(244 244 242 / 0.55); } .ds-ledger-now { position: relative; padding-left: 28px; } .ds-ledger-now p { margin: 0; max-width: 46ch; font-size: 15.5px; line-height: 1.625; color: rgb(244 244 242 / 0.85); } .ds-ledger-dot { position: absolute; left: 0; top: 9px; width: 7px; height: 7px; border-radius: 9999px; background: #16b84f; }"
+    },
+    {
+      "name": "Section Rule Header",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The surface's structural unit: a hairline, a display heading, and a lead capped at 56ch.",
+      "html": "<section class=\"ds-section\"><h2 class=\"ds-section-h\">O painel que você abre de manhã.</h2><p class=\"ds-section-lead\">Receita, despesa e lucro da frota inteira, atualizados conforme os fretes fecham e o motorista registra na estrada.</p></section>",
+      "css": ".ds-section { padding: 128px 32px; border-top: 1px solid rgb(244 244 242 / 0.1); } .ds-section-h { margin: 0; max-width: 15ch; font-family: 'Bodoni Moda', Georgia, serif; font-weight: 400; font-size: clamp(2rem, 3.9vw, 3.5rem); line-height: 1.06; letter-spacing: -0.02em; color: #f4f4f2; } .ds-section-lead { margin: 24px 0 0; max-width: 56ch; font-family: Inter, system-ui, sans-serif; font-size: 16.5px; line-height: 1.625; color: rgb(244 244 242 / 0.55); }"
+    },
+    {
+      "name": "FAQ Accordion Item",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The only other motion on the surface: a ruled disclosure list with a 0.28s/0.22s open-close.",
+      "html": "<div class=\"ds-faq\"><details class=\"ds-faq-item\" open><summary class=\"ds-faq-q\">Quanto custa?<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></summary><p class=\"ds-faq-a\">Os planos ainda estão sendo fechados. Crie a conta agora para usar o sistema e conversamos com você antes de qualquer cobrança.</p></details></div>",
+      "css": ".ds-faq { border-top: 1px solid rgb(244 244 242 / 0.1); font-family: Inter, system-ui, sans-serif; } .ds-faq-item { border-bottom: 1px solid rgb(244 244 242 / 0.1); } .ds-faq-q { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; color: #f4f4f2; font-size: 16.5px; font-weight: 400; cursor: pointer; list-style: none; } .ds-faq-q::-webkit-details-marker { display: none; } .ds-faq-q svg { color: rgb(244 244 242 / 0.5); transition: transform 200ms; } .ds-faq-item[open] .ds-faq-q svg { transform: rotate(180deg); } .ds-faq-q:focus-visible { outline: 2px solid #1bde5f; outline-offset: 3px; border-radius: 2px; } .ds-faq-a { margin: 0; max-width: 62ch; padding: 0 32px 28px 0; color: rgb(244 244 242 / 0.55); font-size: 15px; line-height: 1.625; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Highway",
+    "overview": "The world is asphalt at night with a screen glowing on it. The ground (#070707) is deliberately darker than the app's own background so the marketing surface reads as outside, not inside the product. There is one ink — a warm white (#f4f4f2), headlights rather than paper — and every level of emphasis on the page is that same ink at a different opacity. Colour is not how this page makes hierarchy; density is. Brand green appears only where the product is speaking: the lane line under the settlement, the settled figure, a live status, the mark. It never fills a background, never tints a heading, never decorates.\n\nComposition is ruled rather than boxed. Hairline horizontal rules at 10% ink separate every section; content sits in a single 1280px measure with a 20/32px gutter; figures line up column-wise because anything numeric carries data-figure and gets tabular numerals. Cards exist in exactly two places — the settlement document and the recreated product panels — because those are objects the visitor is meant to read as artifacts, not as containers of copy.\n\nScope: this world governs the public marketing surface only, everything under the .mkt class. The authenticated product keeps Rayna UI v1.0 (../design-system/DESIGN_SYSTEM.md). The two systems share exactly one value, the brand green.",
+    "keyCharacteristics": [
+      "One ink on near-black; tone made by opacity, never by adding hues.",
+      "Green is signal, never surface: the lane line, the settled figure, the live state, the mark.",
+      "Bodoni Moda for display and figures only; Inter for every UI atom.",
+      "Hairline rules (10% ink) as the primary structural device; no floating cards on gradients.",
+      "One authored motion moment on the whole page; figures never animate in.",
+      "Every figure is tabular-lined via [data-figure]."
+    ],
+    "rules": [
+      { "name": "The Single Ink Rule", "body": "Tone on this surface is opacity of one ink. Adding a hue is a decision that must be argued for; the shipped page argues for exactly one (green, as signal).", "section": "colors" },
+      { "name": "The Signal-Only Rule", "body": "Green marks where the product acts or where money settles. If a green element could be recoloured to ink without losing meaning, it should be ink.", "section": "colors" },
+      { "name": "The /50 Floor Rule", "body": "Marketing text never goes below /50 of the ink. On the #070707 ground, /50 composites to ~#7d7d7c and lands at 4.89:1; /45 falls to 4.16:1 and fails AA. /50 is the floor, not a style choice.", "section": "colors" },
+      { "name": "The Serif-For-Money Rule", "body": "Bodoni carries headings and settled figures. A number in a table, a chip, a KPI row or a form is Inter — the display face is reserved for the number the page exists to produce.", "section": "typography" },
+      { "name": "The Tabular Figure Rule", "body": "Anything numeric carries data-figure, which applies tabular-nums / tnum inside .mkt. Money, distances, dates and percentages line up column-wise wherever they can be compared.", "section": "typography" },
+      { "name": "The Lit-Not-Stacked Rule", "body": "Surfaces do not float. If an element needs separation, it gets a hairline or a tonal step, not a shadow. Glow is atmosphere on the horizon, never a halo around a component.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do build tone from opacity of the single ink (#f4f4f2), and keep text at or above /50.",
+      "Do spend green only on signal: the rail, the settled figure, the live state, the mark, the revenue series.",
+      "Do separate with 1px hairlines at ink /10 and let the ground carry the rest.",
+      "Do mark every number with data-figure so tabular numerals apply.",
+      "Do keep Bodoni to headings and settled figures, and hand every label, control and table cell to Inter.",
+      "Do cap measure: 52-56ch for body, 62ch for long answers, 46-50ch inside columns.",
+      "Do rebuild product surfaces in markup from mkt tokens and label illustrative figures as illustrative.",
+      "Do keep the .mkt class on any portal-rendered content (sheets, popovers) so the world travels with it."
+    ],
+    "donts": [
+      "Don't introduce a second hue. There is no red error state, no amber warning, no secondary accent on this surface.",
+      "Don't use green as a background for text, a heading colour, or a decorative fill.",
+      "Don't add box-shadows. The only shadow in this world is under the phone chassis.",
+      "Don't animate figures in, stagger sections on scroll, or add a second authored motion moment; the lineage draw and the accordion are the whole motion budget.",
+      "Don't put display type on a UI atom — labels, chips, buttons, table cells and form controls are Inter.",
+      "Don't import the app's dashboard components or Rayna UI surfaces into a marketing section, and don't let mkt tokens leak into app/(dashboard) or app/(auth).",
+      "Don't show unlabelled money: any illustrative figure carries a caption saying so."
+    ]
+  }
+}

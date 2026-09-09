@@ -28,7 +28,7 @@ import {
 const navMain = [
   {
     title: "Dashboard",
-    url: "/",
+    url: "/dashboard",
     icon: LayoutDashboardIcon,
     isActive: true,
   },
@@ -93,7 +93,7 @@ export function AppSidebar({ userName, userEmail, ...props }: AppSidebarProps) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <a href="/">
+              <a href="/dashboard">
                 <TruckIcon className="h-5 w-5 text-primary" />
                 <span className="text-base font-semibold">FreteAgro</span>
               </a>

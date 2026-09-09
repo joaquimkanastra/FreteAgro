@@ -14,7 +14,7 @@ interface LoginFormProps {
   callbackUrl?: string
 }
 
-export function LoginForm({ callbackUrl = '/' }: LoginFormProps) {
+export function LoginForm({ callbackUrl = '/dashboard' }: LoginFormProps) {
   const router = useRouter()
   const [serverError, setServerError] = useState<string | null>(null)
 

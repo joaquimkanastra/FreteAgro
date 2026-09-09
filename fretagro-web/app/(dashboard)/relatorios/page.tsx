@@ -14,7 +14,7 @@ export default async function RelatoriosPage() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const session = await auth() as any
   if (!session?.user) redirect('/login')
-  if (session.user.role !== 'dono') redirect('/')
+  if (session.user.role !== 'dono') redirect('/dashboard')
 
   return (
     <div className="flex flex-col gap-6">

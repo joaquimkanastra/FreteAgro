@@ -15,7 +15,7 @@ interface LoginPageProps {
 }
 
 export default function LoginPage({ searchParams }: LoginPageProps) {
-  const callbackUrl = searchParams.callbackUrl ?? '/'
+  const callbackUrl = searchParams.callbackUrl ?? '/dashboard'
   const cadastroOk  = searchParams.cadastro === 'ok'
 
   return (

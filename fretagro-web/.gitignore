@@ -29,3 +29,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env
+
+# Impeccable — o contrato de direção (surfaces/) e o config são versionados;
+# screenshots de revisão e cache do hook são artefatos locais.
+.impeccable/review/
+.impeccable/hook.cache.json

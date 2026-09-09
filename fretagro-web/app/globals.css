@@ -137,7 +137,40 @@
   --surface-overlay:  35  35  35;   /* #232323 */
 }
 
+/* ── MARKETING SURFACE ────────────────────────────────────────────────────────
+ * The public site is its own world ("estrada à noite") and does not follow the
+ * app's light/dark toggle: an owner reaching the landing page has no session
+ * and no theme preference yet. Scoped to .mkt so the app is untouched.
+ * Channels are "R G B" so Tailwind opacity modifiers work (mkt.* in the config).
+ */
+.mkt {
+  --mkt-ground:  7   7   7;    /* asphalt at night — below the app's #0d0d0d */
+  --mkt-raise:  16  16  16;    /* panel bodies lifted off the ground */
+  --mkt-ink:   244 244 242;    /* warm white — headlights, not paper */
+  --mkt-signal: 22 184  79;    /* primary-400, brand green, used only as signal */
+  --mkt-glow:   27 222  95;    /* primary-300 — luminance for hairlines on black */
+}
+
 @layer base {
+  /* The marketing surface themes what the browser would otherwise draw itself. */
+  .mkt ::selection {
+    background-color: rgb(var(--mkt-signal) / 0.28);
+    color: rgb(var(--mkt-ink));
+  }
+  .mkt input {
+    caret-color: rgb(var(--mkt-signal));
+  }
+  .mkt *:focus-visible {
+    outline: 2px solid rgb(var(--mkt-glow));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  /* Money and distances line up column-wise wherever they are compared. */
+  .mkt [data-figure] {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
   /* color-scheme switches with the theme class managed by next-themes */
   html {
     color-scheme: light;

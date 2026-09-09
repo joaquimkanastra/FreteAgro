@@ -9,15 +9,18 @@ import { cadastroStep1Schema, type CadastroStep1Input } from '@/lib/auth/schemas
 
 interface CadastroStep1FormProps {
   onNext: (values: CadastroStep1Input) => void
+  /** Address carried over from the landing page, so it is never typed twice. */
+  emailInicial?: string
 }
 
-export function CadastroStep1Form({ onNext }: CadastroStep1FormProps) {
+export function CadastroStep1Form({ onNext, emailInicial }: CadastroStep1FormProps) {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<CadastroStep1Input>({
     resolver: zodResolver(cadastroStep1Schema),
+    defaultValues: emailInicial ? { email: emailInicial } : undefined,
   })
 
   return (

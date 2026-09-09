@@ -15,8 +15,18 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        // Display face for the public marketing surface only; the app stays on Inter.
+        display: ['var(--font-display)', 'Georgia', 'serif'],
       },
       colors: {
+        // ── Marketing surface ("estrada à noite") — see .mkt in globals.css ──
+        mkt: {
+          ground: 'rgb(var(--mkt-ground) / <alpha-value>)',
+          raise:  'rgb(var(--mkt-raise) / <alpha-value>)',
+          ink:    'rgb(var(--mkt-ink) / <alpha-value>)',
+          signal: 'rgb(var(--mkt-signal) / <alpha-value>)',
+          glow:   'rgb(var(--mkt-glow) / <alpha-value>)',
+        },
         // ── Design-system token palettes ─────────────────────────────────
         primary: {
           DEFAULT: 'hsl(var(--primary))',
@@ -87,6 +97,20 @@ const config: Config = {
         modal:  '16px',
         panel:  '24px',
         page:   '28px',
+      },
+      keyframes: {
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.28s cubic-bezier(0.16, 1, 0.3, 1)',
+        'accordion-up': 'accordion-up 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
       },
       boxShadow: {
         sm:   '0px 1px 2px rgba(16, 24, 40, 0.05)',

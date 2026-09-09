@@ -7,7 +7,11 @@ import { useRouter } from 'next/navigation'
 import { CadastroStep1Form } from '@/components/auth/CadastroStep1Form'
 import type { CadastroStep1Input } from '@/lib/auth/schemas'
 
-export default function CadastroPage() {
+export default function CadastroPage({
+  searchParams,
+}: {
+  searchParams?: { email?: string }
+}) {
   const router = useRouter()
 
   function handleStep1Done(values: CadastroStep1Input) {
@@ -41,7 +45,7 @@ export default function CadastroPage() {
         <p className="mt-1 text-p-sm text-grey-400">Seus dados de acesso</p>
       </div>
 
-      <CadastroStep1Form onNext={handleStep1Done} />
+      <CadastroStep1Form onNext={handleStep1Done} emailInicial={searchParams?.email} />
 
       <p className="mt-6 text-center text-p-sm text-grey-400">
         Já tem conta?{' '}
