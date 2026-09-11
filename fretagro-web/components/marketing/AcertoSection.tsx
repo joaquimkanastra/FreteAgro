@@ -9,14 +9,22 @@ const DEDUCOES = [
   { descricao: 'Oficina — troca de lona', data: '11/09', valor: 'R$ 140,00' },
 ]
 
+// Four guarantees, in the order the owner's doubt actually arrives: is the
+// formula the one I use, does the driver agree with it, do the cents hold, and
+// what do I have in hand at the end.
 const GARANTIAS = [
   {
-    titulo: 'A conta é sempre a mesma',
+    titulo: 'A conta é a mesma que você já faz',
     texto:
-      'Valor do frete vezes o percentual do motorista, menos as deduções lançadas no período. Ninguém refaz nada de cabeça.',
+      'Valor do frete vezes o percentual do motorista, menos as deduções lançadas nesse frete. Nada de cabeça, nada de fórmula escondida.',
   },
   {
-    titulo: 'O número não muda de tela para tela',
+    titulo: 'O motorista vê o mesmo número que você',
+    texto:
+      'O saldo dele aparece no app conforme você lança. Quando chega a hora de acertar, não existe número novo para nenhum dos dois.',
+  },
+  {
+    titulo: 'O centavo não muda de tela para tela',
     texto:
       'Todo valor é guardado em centavos inteiros e arredondado uma única vez, então o painel, o acerto e o comprovante mostram o mesmo centavo.',
   },
@@ -40,9 +48,10 @@ export function AcertoSection() {
             O acerto se fecha sozinho.
           </h2>
           <p className="mt-6 max-w-[52ch] text-[16.5px] leading-relaxed text-mkt-ink/55">
-            É a parte que mais custa tempo e mais gera atrito na frota, e é a parte
-            que o FreteAgro assume inteira: do valor bruto do frete até o saldo que
-            o motorista recebe.
+            É a parte que mais custa tempo e mais gera atrito na frota, e é a
+            parte que o FreteAgro assume inteira: do valor bruto do frete até o
+            saldo que o motorista recebe na mão. Um acerto por frete, fechado e
+            guardado.
           </p>
 
           <dl className="mt-12 border-t border-mkt-ink/10">
@@ -61,9 +70,11 @@ export function AcertoSection() {
         <figure className="m-0">
           <div className="overflow-hidden rounded-2xl border border-mkt-ink/12 bg-mkt-raise">
             <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-mkt-ink/10 px-6 py-5 sm:px-8">
-              <p className="text-[15px] text-mkt-ink">Acerto · Motorista 1</p>
+              {/* One settlement per freight, not a monthly closing — the header
+                  identifies the freight so the document matches the product. */}
+              <p className="text-[15px] text-mkt-ink">Acerto do motorista</p>
               <p className="text-[13px] text-mkt-ink/55" data-figure>
-                Setembro / 2026
+                Frete 184 · 14/09/2026
               </p>
             </div>
 
@@ -94,7 +105,7 @@ export function AcertoSection() {
               </dl>
 
               <div className="mt-7 border-t border-mkt-ink/10 pt-6">
-                <p className="text-[13px] text-mkt-ink/55">Deduções do período</p>
+                <p className="text-[13px] text-mkt-ink/55">Deduções deste frete</p>
                 <dl className="mt-3.5 flex flex-col gap-3">
                   {DEDUCOES.map((d) => (
                     <div key={d.descricao} className="flex items-baseline justify-between gap-6">
@@ -133,7 +144,8 @@ export function AcertoSection() {
 
             <div className="flex items-center gap-2.5 border-t border-mkt-ink/10 px-6 py-4 text-[13.5px] text-mkt-ink/55 sm:px-8">
               <FileDown className="h-4 w-4 shrink-0" strokeWidth={1.75} aria-hidden />
-              Comprovante em PDF, com a conta aberta item por item.
+              Comprovante em PDF para o motorista assinar, com a conta aberta
+              item por item.
             </div>
           </div>
 

@@ -17,9 +17,9 @@ const display = Bodoni_Moda({
 })
 
 export const metadata: Metadata = {
-  title: 'FreteAgro — o acerto do motorista, calculado sozinho',
+  title: 'FreteAgro — gestão de frota agrícola e acerto do motorista',
   description:
-    'Controle fretes, abastecimento e caixa da sua frota agrícola. O acerto de cada motorista é calculado automaticamente, com comprovante em PDF.',
+    'Sistema de gestão para frotas de transporte agrícola. O motorista registra a viagem no celular, mesmo sem sinal; você controla fretes, abastecimento e caixa, e o acerto dele sai calculado com comprovante em PDF.',
 }
 
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {

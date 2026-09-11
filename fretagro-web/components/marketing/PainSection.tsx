@@ -4,16 +4,16 @@
 
 const LINHAS = [
   {
-    hoje: 'O motorista anota o trecho num caderno e manda foto no WhatsApp. Você digita tudo de novo na planilha.',
-    agora: 'Ele registra trecho e abastecimento no app do celular. O km e a despesa entram direto no frete.',
+    hoje: 'O motorista anota o km num caderno e manda a foto da nota no WhatsApp. À noite, você digita tudo de novo na planilha.',
+    agora: 'Ele registra o trecho e o abastecimento no celular, mesmo sem sinal. O km e a despesa entram no frete sozinhos.',
   },
   {
     hoje: 'A comissão sai de cabeça e os vales são descontados de memória, num papel que some.',
-    agora: 'A comissão é calculada sobre o valor do frete e cada dedução fica itemizada, com data e motivo.',
+    agora: 'A comissão sai do valor do frete e cada vale fica itemizado, com data e motivo.',
   },
   {
-    hoje: 'O fechamento vira discussão, porque o dono e o motorista chegam com números diferentes.',
-    agora: 'Os dois olham a mesma conta aberta e assinam o mesmo comprovante em PDF.',
+    hoje: 'O fechamento vira discussão: você chega com um número, o motorista chega com outro.',
+    agora: 'Os dois olham a mesma conta aberta — ele no app, você no painel — e assinam o mesmo PDF.',
   },
   {
     hoje: 'No fim do mês a margem sumiu e não dá para dizer em qual caminhão ela ficou.',
@@ -31,9 +31,13 @@ export function PainSection() {
         >
           O problema nunca foi o frete. Foi o fechamento.
         </h2>
+        {/* The lead qualifies before it argues: the visitor should recognise
+            his own fleet in the first clause, or know in one line that this
+            page is not for him. */}
         <p className="mt-6 max-w-[56ch] text-[16.5px] leading-relaxed text-mkt-ink/55">
-          Quatro pontos onde o caderno, o WhatsApp e a planilha cobram caro todo mês
-          — e o que muda quando a frota inteira escreve no mesmo lugar.
+          Quem toca de cinco a trinta caminhões no caderno, no WhatsApp e na
+          planilha perde sempre nos mesmos quatro pontos — e é neles que o
+          FreteAgro entra.
         </p>
 
         {/* Column headers appear once; on phones each cell carries its own label. */}

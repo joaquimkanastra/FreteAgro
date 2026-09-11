@@ -23,9 +23,12 @@ export function FinalCtaSection() {
         >
           Feche o próximo acerto sem discussão.
         </h2>
+        {/* The close asks for one freight, not for a migration: the smallest
+            commitment that still shows the whole product working. */}
         <p className="mt-6 max-w-[52ch] text-[16.5px] leading-relaxed text-mkt-ink/55">
-          Crie a conta, cadastre o primeiro caminhão e rode um frete de ponta a
-          ponta — do trecho registrado na estrada até o comprovante assinado.
+          Crie a conta, cadastre um caminhão e um motorista e rode um frete de
+          ponta a ponta — do trecho registrado na estrada até o comprovante
+          assinado. Dá para fazer isso antes da próxima viagem sair.
         </p>
 
         <div className="mt-10 flex w-full justify-center">
@@ -33,7 +36,7 @@ export function FinalCtaSection() {
         </div>
 
         <p className="mt-3.5 text-[13px] text-mkt-ink/55">
-          Cadastro em duas etapas. Você configura a frota depois.
+          Cadastro em duas etapas e sem cartão. Você configura a frota depois.
         </p>
       </div>
     </section>

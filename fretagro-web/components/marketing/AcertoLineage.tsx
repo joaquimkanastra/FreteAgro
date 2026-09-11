@@ -11,6 +11,11 @@ import { motion, useReducedMotion } from "framer-motion"
 // The operator belongs to the figure it acts on, not to the label above it:
 // on the label line the chain reads "12.400 × 1.488 − 340", which is not the sum.
 // Here it reads 12.400 at 12% → 1.488, then 1.488 − 340 = 1.148.
+// The rail no longer sits above the fold — the hero's bottom band became the
+// device showcase — so the draw waits until it is actually on screen instead of
+// firing where nobody is looking. Once only: this is a statement, not a loop.
+const VIEWPORT = { once: true, amount: 0.4 } as const
+
 const PARADAS = [
   { op: null, label: "Valor do frete", valor: "R$ 12.400,00" },
   { op: null, label: "Comissão do motorista · 12%", valor: "R$ 1.488,00" },
@@ -35,7 +40,8 @@ export function AcertoLineage() {
       <motion.div
         aria-hidden
         initial={reduzido ? false : { scaleY: 0, scaleX: 0 }}
-        animate={{ scaleY: 1, scaleX: 1 }}
+        whileInView={{ scaleY: 1, scaleX: 1 }}
+        viewport={VIEWPORT}
         transition={{ duration: 1.5, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
         className="absolute left-[3.5px] top-2 w-px origin-top bg-mkt-signal lg:left-0 lg:right-0 lg:top-[3.5px] lg:h-px lg:w-auto lg:origin-left"
         style={{ bottom: "0.5rem" }}
@@ -47,7 +53,8 @@ export function AcertoLineage() {
             <motion.span
               aria-hidden
               initial={reduzido ? false : { scale: 0 }}
-              animate={{ scale: 1 }}
+              whileInView={{ scale: 1 }}
+              viewport={VIEWPORT}
               transition={{ duration: 0.5, delay: 0.45 + i * 0.32, ease: [0.16, 1, 0.3, 1] }}
               className={`absolute left-0 top-2 block h-[8px] w-[8px] -translate-x-[2.5px] rounded-full lg:top-0 ${
                 p.final ? "bg-mkt-glow" : "bg-mkt-signal"

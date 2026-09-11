@@ -7,17 +7,17 @@ const AREAS = [
   {
     titulo: 'Fretes',
     texto:
-      'Cada viagem com origem, destino, valor e despesas, seguindo o status até o acerto sair.',
+      'Cada viagem com origem, destino, carga, valor e despesas, do "em andamento" até o acerto realizado.',
   },
   {
     titulo: 'Frota',
     texto:
-      'Caminhão e motorista vinculados, com custo, km rodado e consumo por veículo.',
+      'Caminhão e motorista vinculados, com km rodado, consumo e custo por veículo — dá para ver qual caminhão paga a própria conta.',
   },
   {
     titulo: 'Caixa',
     texto:
-      'Entradas e saídas do período, com o abastecimento lançado pelo motorista entrando como despesa.',
+      'Entradas e saídas do período por categoria, com o abastecimento lançado na estrada já entrando como despesa.',
   },
 ]
 
@@ -31,9 +31,14 @@ export function PanelSection() {
         >
           O painel que você abre de manhã.
         </h2>
-        <p className="mt-6 max-w-[56ch] text-[16.5px] leading-relaxed text-mkt-ink/55">
-          Receita, despesa e lucro da frota inteira, atualizados conforme os fretes
-          fecham e o motorista registra na estrada. Sem consolidar planilha no domingo.
+        {/* Two things the owner buys here that the mockup alone does not say:
+            the panel tells him what is waiting on him, and it exports to the
+            person who asks him for numbers. */}
+        <p className="mt-6 max-w-[58ch] text-[16.5px] leading-relaxed text-mkt-ink/55">
+          Receita, despesa e lucro da frota inteira, atualizados conforme os
+          fretes fecham e o motorista registra na estrada. Com alerta do que está
+          parado esperando você e exportação em PDF e Excel para o contador — sem
+          passar o domingo consolidando planilha.
         </p>
       </div>
 

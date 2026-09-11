@@ -35,8 +35,9 @@ export function MarketingFooter() {
               <span className="font-medium tracking-tight">FreteAgro</span>
             </Link>
             <p className="mt-4 max-w-[34ch] text-[14px] leading-relaxed text-mkt-ink/55">
-              Gestão de frota agrícola: fretes, abastecimento, caixa e o acerto do
-              motorista calculado sozinho.
+              Gestão de frota de transporte agrícola: fretes, abastecimento,
+              caixa e o acerto do motorista calculado sozinho, com comprovante
+              em PDF.
             </p>
           </div>
 

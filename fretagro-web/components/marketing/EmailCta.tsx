@@ -53,7 +53,10 @@ export function EmailCta() {
             setEmail(e.target.value)
             if (erro) setErro(null)
           }}
-          placeholder="Seu e-mail de trabalho"
+          // Not "e-mail de trabalho": this owner runs the fleet from the same
+          // address he uses for everything else, and the corporate phrasing
+          // reads as a form built for someone other than him.
+          placeholder="Seu melhor e-mail"
           aria-invalid={erro ? true : undefined}
           aria-describedby={erro ? `${id}-erro` : undefined}
           className={`h-[52px] w-full min-w-0 rounded-full border bg-mkt-ink/[0.04] px-5 text-[15px] text-mkt-ink transition-colors duration-200 placeholder:text-mkt-ink/55 hover:border-mkt-ink/25 sm:w-auto sm:flex-1 ${
